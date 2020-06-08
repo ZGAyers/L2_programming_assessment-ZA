@@ -44,6 +44,7 @@ def num_check(question):
 printout = []
 converted_weight = []
 
+# loop of getting information from user
 stop = ""
 while stop != "exit":
     product = []
@@ -62,8 +63,8 @@ while stop != "exit":
     get_weight = num_check("Weight(g): ")
 
     # append the information the user entered into a single line of code
-    printout.append("${:.2f} {}, {:.2f}g".format(get_cost, get_product.title(), get_weight))
 
+    printout.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
     if get_weight > 1:
         print("hi")
 
