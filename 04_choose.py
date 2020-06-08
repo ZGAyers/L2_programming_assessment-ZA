@@ -1,4 +1,4 @@
-# Component 03 - converts from grams into kilograms
+# Component 04 - choose the item that the user should buy
 
 
 # Not Blank function goes here
@@ -43,6 +43,13 @@ def num_check(question):
 # set up lists
 printout = []
 kg_weight = []
+final_print = []
+affordable_items = []
+# Ask user what their budget is for the item
+budget = num_check("Budget: ")
+
+# print out the users budget in correct format
+print("Your budget is ${:.2f}".format(budget))
 
 # loop of getting information from user
 stop = ""
@@ -63,14 +70,19 @@ while stop != "exit":
     get_weight = num_check("Weight(g): ")
 
     # append the information the user entered into a single line of code
-
+    # if the weight is in g:
     if get_weight > 0.999:
         printout.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
         kg_weight.append(get_weight / 1000)
 
+    # if weight is in kg already:
     else:
         printout.append("${:.2f} {}, {}kg".format(get_cost, get_product.title(), get_weight))
         kg_weight.append(get_weight)
+
+    if get_cost > budget:
+        print("hello")
+
 
 for item in printout:
     print(item)
