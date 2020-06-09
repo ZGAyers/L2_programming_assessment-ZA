@@ -21,7 +21,6 @@ def not_blank(question, error_msg, ):
 
 # Number Checking Function goes here
 def num_check(question):
-
     error = "Please enter a number that is more than zero"
     valid = False
     while not valid:
@@ -44,7 +43,8 @@ def num_check(question):
 printout = []
 kg_weight = []
 afford_list = []
-affordable_items = []
+which_product = []
+
 # Ask user what their budget is for the item
 budget = num_check("Budget: ")
 
@@ -80,16 +80,27 @@ while stop != "exit":
         printout.append("${:.2f} {}, {}kg".format(get_cost, get_product.title(), get_weight))
         kg_weight.append(get_weight)
 
-    afford_list = printout
-    if get_cost > budget:
-        del afford_list[]
+    # if the user can afford the product
+    if budget == get_cost:
+        afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
+
+    elif budget > get_cost:
+        afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
+
+    which_product.append(afford_list)
 
 
+# print out list of items
 for item in printout:
     print(item)
 
-for item in kg_weight:
+# print out items they can afford
+print()
+print("Affordable product/s within a ${} budget: ".format(budget))
+for item in afford_list:
     print(item)
 
-for item in afford_list:
+print()
+print("Suggested Item:")
+for item in which_product:
     print(item)
