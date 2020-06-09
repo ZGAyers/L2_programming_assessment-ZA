@@ -43,7 +43,7 @@ def num_check(question):
 # set up lists
 printout = []
 kg_weight = []
-final_print = []
+afford_list = []
 affordable_items = []
 # Ask user what their budget is for the item
 budget = num_check("Budget: ")
@@ -80,12 +80,16 @@ while stop != "exit":
         printout.append("${:.2f} {}, {}kg".format(get_cost, get_product.title(), get_weight))
         kg_weight.append(get_weight)
 
+    afford_list = printout
     if get_cost > budget:
-        print("hello")
+        del afford_list[]
 
 
 for item in printout:
     print(item)
 
 for item in kg_weight:
+    print(item)
+
+for item in afford_list:
     print(item)
