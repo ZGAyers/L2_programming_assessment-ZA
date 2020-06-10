@@ -87,8 +87,6 @@ while stop != "exit":
     elif budget > get_cost:
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
 
-    which_product.append(afford_list)
-
 
 # print out list of items
 for item in printout:
@@ -96,11 +94,16 @@ for item in printout:
 
 # print out items they can afford
 print()
-print("Affordable product/s within a ${} budget: ".format(budget))
-for item in afford_list:
-    print(item)
+if afford_list != []:
+    print("Affordable product/s within a ${:.2f} budget: ".format(budget))
+    for item in afford_list:
+        print(item)
 
-print()
-print("Suggested Item:")
-for item in which_product:
-    print(item)
+    print()
+    print("Suggested Item:")
+    for item in which_product:
+        print(item)
+else:
+    print("--------------------------------------")
+    print("You can't afford any of these products")
+    print("--------------------------------------")
