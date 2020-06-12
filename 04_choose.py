@@ -88,6 +88,7 @@ while stop != "exit":
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
 
 
+
 # print out list of items
 for item in printout:
     print(item)
