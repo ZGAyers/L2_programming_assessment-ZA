@@ -1,4 +1,4 @@
-# Component 04 - choose the item that the user should buy
+# V1 of Budget Calculator Final Program
 
 
 # Not Blank function goes here
@@ -43,10 +43,7 @@ def num_check(question):
 printout = []
 kg_weight = []
 afford_list = []
-which_product = []
 weight_aff = []
-product_aff = []
-cost_aff = []
 
 
 # Ask user what their budget is for the item
@@ -88,15 +85,12 @@ while stop != "exit":
     if budget == get_cost:
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
         weight_aff.append(get_weight)
-        product_aff.append(get_product)
-        cost_aff.append(get_cost)
 
     elif budget > get_cost:
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
         weight_aff.append(get_weight)
-        product_aff.append(get_product)
-        cost_aff.append(get_cost)
 
+    # get the suggested item
     tp_weight = ("${:.2f} {}, {}g".format(get_cost, get_product.title(), max(weight_aff)))
 
 
@@ -111,6 +105,7 @@ if afford_list != []:
     for item in afford_list:
         print(item)
 
+    # print out the suggested item
     print()
     print("Suggested Item:")
     print(tp_weight)
