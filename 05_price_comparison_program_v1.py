@@ -45,6 +45,9 @@ kg_weight = []
 afford_list = []
 weight_aff = []
 
+# introduce the user to the program
+print("Budget Calculator")
+print("This program is used to ")
 
 # Ask user what their budget is for the item
 budget = num_check("Budget: ")
