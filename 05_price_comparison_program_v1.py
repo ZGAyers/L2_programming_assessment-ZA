@@ -44,23 +44,35 @@ printout = []
 kg_weight = []
 afford_list = []
 weight_aff = []
+tp_weight = []
+
+# Bold print out text option
+bold = "\033[1m"
+reset = "\033[0;0m"
 
 # introduce the user to the program
-print("Budget Calculator")
-print("This program is used to ")
+print(bold, "Budget Calculator", reset)
+print("This program is used to compare prices of products in store")
+print("The program will then remove the items you can't afford and "
+      "suggest one of the products based on its cost and weight.")
+print()
 
 # Ask user what their budget is for the item
-budget = num_check("Budget: ")
-
-# print out the users budget in correct format
-print("Your budget is ${:.2f}".format(budget))
+budget = num_check("What is your budget: $")
+print()
 
 # loop of getting information from user
+print("Please enter a product, its cost and its weight.")
+print("If you have finished entering products type", bold, "'exit'", reset,
+      "to get a printout of the products")
+print()
+
 stop = ""
 while stop != "exit":
     product = []
+    print()
     get_product = not_blank("Product: ",
-                            "Please fill in this field or type 'exit' to quit")
+                            "Please fill in this field or type 'exit' to quit").lower()
     product.append(get_product)
 
     # if user enters exit code break loop
@@ -89,28 +101,33 @@ while stop != "exit":
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
         weight_aff.append(get_weight)
 
+        # get the suggested item
+        tp_weight = ("${:.2f} {}, {}g".format(get_cost, get_product.title(), max(weight_aff)))
+
     elif budget > get_cost:
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
         weight_aff.append(get_weight)
 
-    # get the suggested item
-    tp_weight = ("${:.2f} {}, {}g".format(get_cost, get_product.title(), max(weight_aff)))
+        # get the suggested item
+        tp_weight = ("${:.2f} {}, {}g".format(get_cost, get_product.title(), max(weight_aff)))
 
 
 # print out list of items
+print()
+print(bold, "Items: ", reset)
 for item in printout:
     print(item)
 
 # print out items they can afford
 print()
 if afford_list != []:
-    print("Affordable product/s within a ${:.2f} budget: ".format(budget))
+    print(bold, "Affordable product/s within a ${:.2f} budget: ".format(budget), reset)
     for item in afford_list:
         print(item)
 
     # print out the suggested item
     print()
-    print("Suggested Item:")
+    print(bold, "Suggested Item:", reset)
     print(tp_weight)
 else:
     print("--------------------------------------")
