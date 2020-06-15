@@ -41,10 +41,10 @@ def num_check(question):
 
 # set up lists
 printout = []
-kg_weight = []
+kg_weight = ""
 afford_list = []
-weight_aff = []
 tp_weight = []
+per_kg = []
 
 # Bold print out text option
 bold = "\033[1m"
@@ -89,28 +89,18 @@ while stop != "exit":
     # if the weight is in g:
     if get_weight > 0.999:
         printout.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
-        kg_weight.append(get_weight / 1000)
+        kg_weight = get_weight / 1000
 
     # if weight is in kg already:
     else:
         printout.append("${:.2f} {}, {}kg".format(get_cost, get_product.title(), get_weight))
-        kg_weight.append(get_weight)
+        kg_weight = get_weight
 
     # if the user can afford the product
-    if budget == get_cost:
+    if budget >= get_cost:
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
-        weight_aff.append(get_weight)
-
-        # get the suggested item
-        tp_weight = ("${:.2f} {}, {}g".format(get_cost, get_product.title(), max(weight_aff)))
-
-    elif budget > get_cost:
-        afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
-        weight_aff.append(get_weight)
-
-        # get the suggested item
-        tp_weight = ("${:.2f} {}, {}g".format(get_cost, get_product.title(), max(weight_aff)))
-
+        # get the per kg for item
+        per_kg = [get_cost / kg_weight]
 
 # print out list of items
 print()
