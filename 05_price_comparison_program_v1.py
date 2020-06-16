@@ -48,7 +48,7 @@ get_product = ""
 afford_list = []
 per_kg = []
 suggest = []
-tp_weight = []
+
 
 # Bold print out text option
 bold = "\033[1m"
@@ -93,6 +93,7 @@ while stop != "exit":
     # if the weight is in g:
     if get_weight > 0.999:
         printout.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
+
         kg_weight = get_weight / 1000
 
     # if weight is in kg already:
@@ -105,10 +106,11 @@ while stop != "exit":
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
         # get the per kg for item
         per_kg = [get_cost / kg_weight]
-        print(per_kg)
-        if min([per_kg]) == per_kg:
-            tp_weight.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
 
+        print(per_kg)
+
+suggest.append(printout, per_kg)
+print()
 
 # print out list of items
 print()
