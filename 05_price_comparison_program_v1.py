@@ -37,6 +37,9 @@ def num_check(question):
             print(error)
 
 
+def suggest():
+    print("hi")
+
 # main routine
 
 # set up lists
@@ -47,7 +50,6 @@ get_cost = ""
 get_product = ""
 afford_list = []
 per_kg = []
-suggest = []
 
 
 # Bold print out text option
@@ -105,12 +107,11 @@ while stop != "exit":
     if budget >= get_cost:
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
         # get the per kg for item
-        per_kg = [get_cost / kg_weight]
+        per_kg = (get_cost / kg_weight)
 
         print(per_kg)
 
-suggest.append(printout, per_kg)
-print()
+
 
 # print out list of items
 print()
@@ -128,7 +129,6 @@ if afford_list != []:
     # print out the suggested item
     print()
     print(bold, "Suggested Item:", reset)
-
 else:
     print("--------------------------------------")
     print("You can't afford any of these products")
