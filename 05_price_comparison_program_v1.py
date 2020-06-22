@@ -47,7 +47,7 @@ get_cost = ""
 get_product = ""
 afford_list = []
 per_kg = []
-what_one = []
+suggest = []
 
 # Bold print out text option
 bold = "\033[1m"
@@ -102,8 +102,12 @@ while stop != "exit":
 
     # if the user can afford the product
     if budget >= get_cost:
-        per_kg = (get_cost / kg_weight)
+        per_kg.append(get_cost / kg_weight)
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
+
+        if per_kg == min(per_kg):
+            suggest.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
+            print("this works")
         # get the per kg for item
         print(per_kg)
 
@@ -124,6 +128,8 @@ if afford_list != []:
     # print out the suggested item
     print()
     print(bold, "Suggested Item:", reset)
+    for item in suggest:
+        print(item)
 
 else:
     print("--------------------------------------")
