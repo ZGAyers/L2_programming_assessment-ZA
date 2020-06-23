@@ -49,6 +49,7 @@ afford_list = []
 per_kg = []
 suggest = []
 
+
 # Bold print out text option
 bold = "\033[1m"
 reset = "\033[0;0m"
@@ -98,6 +99,7 @@ while stop != "exit":
     # if weight is in kg already:
     else:
         printout.append("${:.2f} {}, {}kg".format(get_cost, get_product.title(), get_weight))
+        
         kg_weight = get_weight
 
     # if the user can afford the product
