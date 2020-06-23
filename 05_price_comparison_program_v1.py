@@ -111,7 +111,10 @@ while stop != "exit":
         # get the per kg for item
         per_kg.append(get_cost / kg_weight)
         # what the users can afford
-        afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
+        if get_weight > 0.999:
+            afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
+        else:
+            afford_list.append("${:.2f} {}, {}kg".format(get_cost, get_product.title(), get_weight))
 
         # string_list for list of what the user can afford and the per_kg
         string_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight,))
@@ -119,13 +122,14 @@ while stop != "exit":
 
         print(per_kg)  # remove this later
 
+
 # if per_kg in list is the same as the minimum of per kg get item
 if string_list[1] == min(per_kg):
     # simple loop to remove per_kg from final print out
     for item in string_list:
         if item not in per_kg:
             suggest.append(item)
-    print("this works")  # remove this later
+    print("This works")  # remove this later
 
 # print out list of items
 print()
