@@ -75,8 +75,10 @@ stop = ""
 while stop != "exit":
     product = []
     print()
+    # get product name from user
     get_product = not_blank("Product: ",
                             "Please fill in this field or type 'exit' to quit").lower()
+    # append the name
     product.append(get_product)
 
     # if user enters exit code break loop
@@ -94,30 +96,36 @@ while stop != "exit":
     if get_weight > 0.999:
         printout.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
 
+        # calculate the kg weight
         kg_weight = get_weight / 1000
 
     # if weight is in kg already:
     else:
         printout.append("${:.2f} {}, {}kg".format(get_cost, get_product.title(), get_weight))
 
+        # append the weight that is already in kg
         kg_weight = get_weight
 
     # if the user can afford the product
     if budget >= get_cost:
+        # get the per kg for item
         per_kg.append(get_cost / kg_weight)
+        # what the users can afford
         afford_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight))
 
+        # string_list for list of what the user can afford and the per_kg
         string_list.append("${:.2f} {}, {}g".format(get_cost, get_product.title(), get_weight,))
         string_list.append(per_kg)
 
-        # get the per kg for item
-        print(per_kg)
+        print(per_kg)  # remove this later
 
+# if per_kg in list is the same as the minimum of per kg get item
 if string_list[1] == min(per_kg):
+    # simple loop to remove per_kg from final print out
     for item in string_list:
         if item not in per_kg:
             suggest.append(item)
-    print("this works")
+    print("this works")  # remove this later
 
 # print out list of items
 print()
