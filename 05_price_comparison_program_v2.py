@@ -1,5 +1,6 @@
-# V1 of Budget Calculator Final Program
+# V2 of Budget Calculator Final Program
 
+# -Functions-
 
 # Not Blank function goes here
 def not_blank(question, error_msg, ):
@@ -37,18 +38,18 @@ def num_check(question):
             print(error)
 
 
-# main routine
+# -Main Routine-
 
 # set up lists
 printout = []
-kg_weight = ""
-get_weight = ""
-get_cost = ""
-get_product = ""
 afford_list = []
 per_kg = []
 suggest = []
 string_list = []
+kg_weight = ""
+get_weight = ""
+get_cost = ""
+get_product = ""
 
 # Bold print out text option
 bold = "\033[1m"
@@ -65,12 +66,12 @@ print()
 budget = num_check("What is your budget: $")
 print()
 
-# loop of getting information from user
+# explains to user the look and how to exit it
 print("Please enter a product, its cost and its weight.")
 print("If you have finished entering products type", bold, "'exit'", reset,
       "to get a printout of the products")
 print()
-
+# loop of getting information from user
 stop = ""
 while stop != "exit":
     product = []
@@ -125,31 +126,32 @@ while stop != "exit":
 
 # if per_kg in list is the same as the minimum of per kg get item
 if string_list[1] == min(per_kg):
-    # simple loop to remove per_kg from final print out
+    # simple loop to remove per_kg from final print out of the suggested item
     for item in string_list:
         if item not in per_kg:
             suggest.append(item)
     print("This works")  # remove this later
 
-# print out list of items
+# Output section of program (prints out the information the user needs)
 print()
 print(bold, "Items: ", reset)
 for item in printout:
     print(item)
 
-# print out items they can afford
+# print out items the user can afford on their budget
 print()
 if afford_list != []:
     print(bold, "Affordable product/s within a ${:.2f} budget: ".format(budget), reset)
     for item in afford_list:
         print(item)
 
-    # print out the suggested item
+    # print out the suggested item that the user should buy
     print()
     print(bold, "Suggested Item:", reset)
     for item in suggest:
         print(item)
 
+# if the user cannot afford any products, print:
 else:
     print("--------------------------------------")
     print("You can't afford any of these products")
