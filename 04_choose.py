@@ -47,7 +47,7 @@ which_product = []
 weight_aff = []
 product_aff = []
 cost_aff = []
-
+tp_weight = ""
 
 # Ask user what their budget is for the item
 budget = num_check("Budget: ")
