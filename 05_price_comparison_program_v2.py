@@ -2,6 +2,7 @@
 
 # -Functions-
 
+
 # Not Blank function goes here
 def not_blank(question, error_msg, ):
     error = error_msg
@@ -46,23 +47,24 @@ afford_list = []
 per_kg = []
 suggest = []
 string_list = []
+# set up certain variables for later code
 kg_weight = ""
 get_weight = ""
 get_cost = ""
 get_product = ""
 
-# Bold print out text option
+# Bold printout text option and reset option
 bold = "\033[1m"
 reset = "\033[0;0m"
 
-# introduce the user to the program
+# introduce the user to the program / what the program is used for
 print(bold, "Budget Calculator", reset)
 print("This program is used to compare prices of products in store")
 print("The program will then remove the items you can't afford and "
       "suggest one of the products based on its cost and weight.")
 print()
 
-# Ask user what their budget is for the item
+# Ask user what their budget is for the product
 budget = num_check("What is your budget: $")
 print()
 
@@ -74,13 +76,10 @@ print()
 # loop of getting information from user
 stop = ""
 while stop != "exit":
-    product = []
     print()
     # get product name from user
     get_product = not_blank("Product: ",
                             "Please fill in this field or type 'exit' to quit").lower()
-    # append the name
-    product.append(get_product)
 
     # if user enters exit code break loop
     if get_product == "exit":
@@ -132,6 +131,7 @@ if string_list[1] == min(per_kg):
             suggest.append(item)
     print("This works")  # remove this later
 
+# -Printout-
 # Output section of program (prints out the information the user needs)
 print()
 print(bold, "Items: ", reset)
