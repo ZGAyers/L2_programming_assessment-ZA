@@ -120,8 +120,6 @@ while stop != "exit":
         # string_list for list of what the user can afford and the per_kg
         string_list.append([get_cost, get_product.title(), get_weight, per_kg])
 
-        print(per_kg)  # remove this later
-
 
 # -Printout-
 # Output section of program (prints out the information the user needs)
