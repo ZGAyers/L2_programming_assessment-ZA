@@ -44,9 +44,10 @@ def num_check(question):
 # set up lists
 printout = []
 afford_list = []
-per_kg = ""
+per_kg = []
 suggest = []
 string_list = []
+
 # set up certain variables for later code
 kg_weight = ""
 get_weight = ""
@@ -61,7 +62,7 @@ reset = "\033[0;0m"
 print(bold, "Budget Calculator", reset)
 print("This program is used to compare prices of products in store")
 print("The program will then remove the items you can't afford and "
-      "suggest one of the products based on its cost and weight.")
+      "suggest one of the products based on its cost per kilo.")
 print()
 
 # Ask user what their budget is for the product
@@ -117,9 +118,7 @@ while stop != "exit":
             afford_list.append("${:.2f} {}, {}kg, ${:.2f} per kg".format(get_cost, get_product.title(), get_weight, per_kg))
 
         # string_list for list of what the user can afford and the per_kg
-        string_list = [[get_cost, get_product.title(), get_weight, per_kg]]
-
-        string_list.sort(key=lambda x: x[3])
+        string_list.append([get_cost, get_product.title(), get_weight, per_kg])
 
         print(per_kg)  # remove this later
 
@@ -134,6 +133,12 @@ for item in printout:
 # print out items the user can afford on their budget
 print()
 if afford_list != []:
+
+    # sort the list and append the item that has the smallest cost per kg
+    string_list.sort(key=lambda x: x[3])
+    suggest.append(string_list[0])
+
+    # items user can afford
     print(bold, "Affordable product/s within a ${:.2f} budget: ".format(budget), reset)
     for item in afford_list:
         print(item)
@@ -141,7 +146,7 @@ if afford_list != []:
     # print out the suggested item that the user should buy
     print()
     print(bold, "Suggested Item:", reset)
-    for item in string_list[0]:
+    for item in suggest:
         print("${:.2f} {}, {}kg, ${:.2f} per kg".format(item[0], item[1], item[2], item[3]))
 
 # if the user cannot afford any products, print:
